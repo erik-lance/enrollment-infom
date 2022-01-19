@@ -15,7 +15,7 @@
     <body>
         <jsp:useBean id="studentBean" class="enrollment.students" scope="session"/>
         
-        
+        <!-- This entire section is for printing the data of student. -->
         <% 
             if (request.getParameter("stID") != null)
             studentBean.studentid = Integer.parseInt(request.getParameter("stID")); 
@@ -34,7 +34,7 @@
 
         <form name="studentID" action="studentmaintenance.jsp" method="POST">
             Enter student ID - <input type="text" name="stID" id="stID"><br>
-            <input type="submit" value="LoadData" name="checkID" />
+            <input type="submit" value="Load Data" name="checkID" />
             <input type="submit" value="Add" name="addID" />
         </form>
         <form name="studentIDConfig" method="POST">
@@ -45,7 +45,7 @@
 
 
         
-        
+        <a href="index.html">Return to main menu</a>
         <!-- <form name="selectMaintenance" action="" -->
     </body>
 </html>

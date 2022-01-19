@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
     Document:   drop.jsp
-    Author:     Erik Lance Tiongquico
+    Author:     
 -->
 <html>
     <head>
