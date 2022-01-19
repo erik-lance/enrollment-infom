@@ -14,16 +14,27 @@
     </head>
     <body>
         <jsp:useBean id="studentBean" class="enrollment.students" scope="session"/>
-        <% studentBean.viewRecord(); %>
         
-        <% String studentid       = request.getParameter("studentid");    %>
-        <% String completename  = request.getParameter("completename"); %>
-        <% String degreeid      = request.getParameter("price");        %>
+        
+        <% 
+            if (request.getParameter("stID") != null)
+            studentBean.studentid = Integer.parseInt(request.getParameter("stID")); 
+            studentBean.viewRecord();
+        
+        %>
+        <% String studentid = (studentBean.studentid == 0) ? "" : 
+        Long.toString(studentBean.studentid);   
+        
+        %>
+        <% String completename  = studentBean.completename;         %>
+        <% String degreeid      = studentBean.degreeid;             %>
         <p><%=studentid%></p>
+        <p><%=completename%></p>
+        <p><%=degreeid%></p>
 
         <form name="studentID" action="studentmaintenance.jsp" method="POST">
-            Enter student ID - <input type="text" name="ID" id="ID"><br>
-            <input type="submit" value="Load Data" name="checkID" />
+            Enter student ID - <input type="text" name="stID" id="stID"><br>
+            <input type="submit" value="LoadData" name="checkID" />
             <input type="submit" value="Add" name="addID" />
         </form>
         <form name="studentIDConfig" method="POST">
