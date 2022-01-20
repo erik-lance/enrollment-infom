@@ -17,17 +17,29 @@
         
         <!-- This entire section is for printing the data of student. -->
         <% 
-            if (request.getParameter("stID") != null)
-            studentBean.studentid = Integer.parseInt(request.getParameter("stID")); 
+            String status = "Choose a Maintenance Option";
+            if (request.getParameter("stID") != null) {
+                studentBean.studentid = Integer.parseInt(request.getParameter("stID")); 
+                status = "Student Record";
+            }
             studentBean.viewRecord();
-        
-        %>
-        <% String studentid = (studentBean.studentid == 0) ? "" : 
-        Long.toString(studentBean.studentid);   
-        
+            if (request.getParameter("deleteID") != null) {
+                status = "Deleting Student!";
+            
+            }
+            else if (request.getParameter("modifyID") != null) {
+                status = "Modifying Student!";
+            }
+            else if (request.getParameter("addID") != null) {
+                status = "Adding Student!";
+            }
+            
+            String studentid = (studentBean.studentid == 0) ? "" : 
+            Long.toString(studentBean.studentid);   
         %>
         <% String completename  = studentBean.completename;         %>
         <% String degreeid      = studentBean.degreeid;             %>
+        <p><%=status%></p>
         <p><%=studentid%></p>
         <p><%=completename%></p>
         <p><%=degreeid%></p>
@@ -36,11 +48,12 @@
             Enter student ID - <input type="text" name="stID" id="stID"><br>
             <input type="submit" value="Load Data" name="checkID" />
             <input type="submit" value="Add" name="addID" />
+            <input type="submit" value="Modify" name="modifyID" />
+            <input type="submit" value="Delete" name="deleteID" />
         </form>
         <form name="studentIDConfig" method="POST">
             
-            <input type="submit" value="Modify" name="modifyID" />
-            <input type="submit" value="Delete" name="deleteID" />
+            
         </form>
 
 
