@@ -95,6 +95,5 @@
         %>
         <br><br>
         <a href="index.html">Return to main menu</a>
-        <!-- <form name="selectMaintenance" action="" -->
     </body>
 </html>
