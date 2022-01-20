@@ -4,7 +4,7 @@
     Author:     
 -->
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.sql.*, java.util.*, enrollment.*" %>
+<%@page import="java.sql.*, java.util.*, enrollment.enrollment.*" %>
 
 <html>
     <head>
@@ -14,14 +14,14 @@
     </head>
     <body>
         <h1>Added course to cart!</h1>
-        <jsp:useBean id="enrollBean" class="enroll" scope="session" />
+        <jsp:useBean id="enrollBean" class="enrollment.enroll" scope="session" />
         <%
-            enrollment E = enrollBean.EnrollmentList.get(enrollBean.EnrollmentList.size()-1);
+            enrollment.enrollment E = enrollBean.EnrollmentList.get(enrollBean.EnrollmentList.size()-1);
             E.courseid = request.getParameter("selectCourse");
-            String studentid = E.studentid;
+            String studentid = Long.toString(E.studentid);
             String courseid  = E.courseid;
-            String term      = E.term;
-            String year      = E.schoolyear;
+            String term      = Integer.toString(E.term);
+            String year      = Integer.toString(E.schoolyear);
 
             // Note this isn't added as a record in enrollment immediately as it is just in the cart.
             // This will be handled in submitenroll.jsp
