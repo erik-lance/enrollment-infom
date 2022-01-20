@@ -9,7 +9,7 @@ import java.util.*;
 
 public class enroll {
 
-    students                        Student         = new students();
+    public students                 Student         = new students();
     public ArrayList<enrollment>    EnrollmentList  = new ArrayList<> ();
     public ArrayList<coursedegree>  CourseList      = new ArrayList<> ();
  
@@ -17,7 +17,7 @@ public class enroll {
     public enroll() {
         EnrollmentList.clear();
         CourseList.clear();
-    }
+    } 
     
     // clears enrollment data of the student 
     public int clearEnrollment () {   
