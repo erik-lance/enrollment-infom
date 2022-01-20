@@ -4,7 +4,7 @@
     Author:     Erik Lance Tiongquico
 -->
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.sql.*, java.util.*, enrollment.enrollment.*" %>
+<%@page import="java.sql.*, java.util.*, enrollment.*" %>
 
 <html>
     <head>
@@ -13,7 +13,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <jsp:useBean id="studentBean" class="enrollment.students" scope="session"/>
+        <jsp:useBean id="studentBean" class="students" scope="session"/>
         
         <!-- This entire section is for printing and manipulating the data of student. -->
         <% 
