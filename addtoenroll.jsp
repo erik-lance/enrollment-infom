@@ -27,9 +27,19 @@
             // This will be handled in submitenroll.jsp
         %>
         <%=studentid%><br>
+        <%=enrollBean.Student.completename%><br>
         You are enrolling in: <%=courseid%> <br>
-        <%=term%> of <%=year%> <br><br>
+        Term <%=term%> of <%=year%> <br><br><br><br>
 
+        <b>Courses in Cart:</b>
+        <%
+            for (int i = 0; i < enrollBean.EnrollmentList.size(); i++) {
+                E    = new enrollment.enrollment();
+                E = enrollBean.EnrollmentList.get(i);
+        %>
+                Term <%=E.term%>, <%=E.schoolyear%> <%=E.courseid%>
+          <%}%>
+        <br><br><br>
         <!-- TODO: Add a list of currently enrolled courses for viewing -->
         <a href="enroll.jsp">Return to enroll</a>
     </body>
