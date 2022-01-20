@@ -15,7 +15,7 @@
     <body>
         <jsp:useBean id="studentBean" class="enrollment.students" scope="session"/>
         
-        <!-- This entire section is for printing the data of student. -->
+        <!-- This entire section is for printing and manipulating the data of student. -->
         <% 
             String status = "Choose a Maintenance Option";
             if (request.getParameter("stID") != null) {
@@ -30,7 +30,8 @@
             }
             else if (request.getParameter("modifyID") != null) { status = "Modifying Student"; }
             else if (request.getParameter("addID") != null) { status = "Adding Student"; }
-            else if (request.getParameter("saveMod") != null) {
+            else if (request.getParameter("saveMod") != null) 
+            {   // This is to help save the modifications performed on a student ID.
                 status = "Student modified successfully.";
                 studentBean.viewRecord();
                 studentBean.completename = request.getParameter("stFName") + " " + request.getParameter("stLName");
@@ -38,7 +39,8 @@
                 //studentBean.modRecord();
                 studentBean.viewRecord();
             }
-            else if (request.getParameter("saveAdd") != null) {
+            else if (request.getParameter("saveAdd") != null)
+            {   // This section is to save the additions performed on a new student ID.
                 status = "Student added successfully.";
                 studentBean.completename = request.getParameter("stFName") + " " + request.getParameter("stLName");
                 studentBean.degreeid = request.getParameter("stDegree");
@@ -46,11 +48,14 @@
                 studentBean.viewRecord();
             }
 
+            // This is for printing out the data of selected student based on ID.
+            // This ternary is to clean out student id as blank because its datatype is long.
             String studentid = (studentBean.studentid == 0) ? "" : 
             Long.toString(studentBean.studentid);   
+
+            String completename  = studentBean.completename;
+            String degreeid      = studentBean.degreeid;             
         %>
-        <% String completename  = studentBean.completename;         %>
-        <% String degreeid      = studentBean.degreeid;             %>
         <h1><%=status%></h1>
         <p><%=studentid%></p>
         <p><%=completename%></p>
