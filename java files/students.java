@@ -13,7 +13,7 @@ public class students {
     public int modRecord()  { 
         Connection conn;
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/enrollmentdb?user=root&password=12345678&useTimezone=true&serverTimezone=UTC&useSSL=false");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/enrolldb?user=root&password=12345678&useTimezone=true&serverTimezone=UTC&useSSL=false");
             PreparedStatement   sqlstatement = conn.prepareStatement("UPDATE students SET completename=?, degreeid=? department=? WHERE studentid=?");
             sqlstatement.setLong(3, studentid);
             sqlstatement.setString(1, completename);
@@ -30,7 +30,7 @@ public class students {
     public int delRecord()  { 
         Connection conn;
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/enrollmentdb?user=root&password=12345678&useTimezone=true&serverTimezone=UTC&useSSL=false");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/enrolldb?user=root&password=12345678&useTimezone=true&serverTimezone=UTC&useSSL=false");
             PreparedStatement   sqlstatement = conn.prepareStatement("DELETE FROM students WHERE studentid=?");
             sqlstatement.setLong(1, studentid);
             sqlstatement.executeUpdate();
@@ -45,7 +45,7 @@ public class students {
     public int addRecord()  { 
         Connection conn;
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/enrollmentdb?user=root&password=12345678&useTimezone=true&serverTimezone=UTC&useSSL=false");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/enrolldb?user=root&password=12345678&useTimezone=true&serverTimezone=UTC&useSSL=false");
             PreparedStatement   sqlstatement = conn.prepareStatement("INSERT INTO students (studentid,completename,degreeid) VALUES (?,?,?)");
             sqlstatement.setLong(1, studentid);
             sqlstatement.setString(2, completename);
@@ -62,7 +62,7 @@ public class students {
     public int viewRecord() { 
         Connection conn;
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/enrollmentdb?user=root&password=12345678&useTimezone=true&serverTimezone=UTC&useSSL=false");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/enrolldb?user=root&password=12345678&useTimezone=true&serverTimezone=UTC&useSSL=false");
             PreparedStatement   sqlstatement = conn.prepareStatement("SELECT completename, degreeid FROM students WHERE studentid=?");
             sqlstatement.setLong(1, studentid);
             ResultSet rs = sqlstatement.executeQuery();
