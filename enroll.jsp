@@ -4,7 +4,7 @@
     Author:     
 -->
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.sql.*, java.util.*, enrollment.*" %>
+<%@page import="java.sql.*, java.util.*, enrollment.enrollment.*" %>
 
 <html>
     <head>
@@ -16,7 +16,7 @@
         <h1>Enrolling a Student into the Database</h1>
         
         <p> Load Student Data</p>
-        <jsp:useBean id="enrollBean" class="enroll" scope="session"/>
+        <jsp:useBean id="enrollBean" class="enrollment.enroll" scope="session"/>
         
         <!-- This entire section is for printing the data of student. -->
         <% 
@@ -27,7 +27,7 @@
 
                 // This is to prepare student for enrollment by creating a record for the list.
                 // The courseID is to be provided in addtoenroll.jsp after submitting.
-                enrollment E = new enrollment();
+                enrollment.enrollment E = new enrollment.enrollment();
                 E.studentid  = enrollBean.Student.studentid;
                 E.term       = Integer.parseInt(request.getParameter("curTerm"));
                 E.schoolyear = Integer.parseInt(request.getParameter("curYear"));
@@ -68,9 +68,9 @@
             <h2>Select a course to enroll</h2>
             <select name="selectCourse" id="selectCourse">
                 <%  for (int i = 0; i < enrollBean.CourseList.size(); i++) {
-                        coursedegree CD = new coursedegree();
+                        enrollment.coursedegree CD = new enrollment.coursedegree();
                         CD = enrollBean.CourseList.get(i);                      %>
-                    <option value="<%=CD.courseid%>"><%=CD.degree%></option>
+                    <option value="<%=CD.courseid%>"><%=CD.courseid%></option>
                 <%  }%>
             </select><br>
             <input type="submit" value="Add to cart" name="addCart" />
