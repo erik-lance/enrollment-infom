@@ -44,13 +44,15 @@ public class enroll {
             sqlstatement.setString(2, Student.degreeid);
             ResultSet rs = sqlstatement.executeQuery();
             CourseList.clear();
-            coursedegree c = new coursedegree();
+            
             while (rs.next()) {
+                coursedegree c = new coursedegree();
                 c.courseid = rs.getString("courseid");
                 c.degree = Student.degreeid;
                 c.viewRecord(); //only returns 1 since all of the fields of enrollment are PKs
                 CourseList.add(c);
             }
+            rs.close();
             sqlstatement.close();
             conn.close();
             return 1;    
