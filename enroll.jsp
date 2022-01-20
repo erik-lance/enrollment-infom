@@ -4,7 +4,7 @@
     Author:     
 -->
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.sql.*, java.util.*, enrollment.enrollment.*" %>
+<%@page import="java.sql.*, java.util.*, enrollment.*" %>
 
 <html>
     <head>
@@ -16,31 +16,31 @@
         <h1>Enrolling a Student into the Database</h1>
         
         <p> Load Student Data</p>
-        <jsp:useBean id="enrollBean" class="enrollment.enroll" scope="session"/>
+        <jsp:useBean id="enrollBean" class="enroll" scope="session"/>
         
         <!-- This entire section is for printing the data of student. -->
         <% 
             String status = "Enroll";
             if (request.getParameter("stID") != null) {
-                enrollBean.student.studentid = Integer.parseInt(request.getParameter("stID")); 
+                enrollBean.Student.studentid = Integer.parseInt(request.getParameter("stID")); 
                 status = "Student Record";
 
                 // This is to prepare student for enrollment by creating a record for the list.
                 // The courseID is to be provided in addtoenroll.jsp after submitting.
                 enrollment E = new enrollment();
-                E.studentid  = enrollBean.studentid;
+                E.studentid  = enrollBean.Student.studentid;
                 E.term       = Integer.parseInt(request.getParameter("curTerm"));
                 E.schoolyear = Integer.parseInt(request.getParameter("curYear"));
                 enrollBean.EnrollmentList.add(E);
             }
-            enrollBean.viewRecord();
+            enrollBean.Student.viewRecord();
         
             // This is for printing purposes since it will print 0 instead of empty.
-            String studentid = (enrollBean.studentid == 0) ? "" : 
-            Long.toString(enrollBean.studentid);   
+            String studentid = (enrollBean.Student.studentid == 0) ? "" : 
+            Long.toString(enrollBean.Student.studentid);   
 
-            String completename  = enrollBean.completename;
-            String degreeid      = enrollBean.degreeid;             
+            String completename  = enrollBean.Student.completename;
+            String degreeid      = enrollBean.Student.degreeid;             
         %>
         <!-- This loads the student data -->
         <h1><%=status%></h1>
@@ -70,7 +70,7 @@
                 <%  for (int i = 0; i < enrollBean.CourseList.size(); i++) {
                         coursedegree CD = new coursedegree();
                         CD = enrollBean.CourseList.get(i);                      %>
-                    <option value="<%CD.courseid%>"><%CD.coursedegree%></option>
+                    <option value="<%=CD.courseid%>"><%=CD.degree%></option>
                 <%  }%>
             </select><br>
             <input type="submit" value="Add to cart" name="addCart" />
