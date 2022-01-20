@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-    Document:   report.jsp
+    Document:   addtoenroll.jsp
     Author:     
 -->
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -26,10 +26,9 @@
             // Note this isn't added as a record in enrollment immediately as it is just in the cart.
             // This will be handled in submitenroll.jsp
         %>
-        <%=studentid%><br>
-        <%=enrollBean.Student.completename%><br>
+        <p><%=studentid%> <%=enrollBean.Student.completename%></p>
         You are enrolling in: <%=courseid%> <br>
-        Term <%=term%> of <%=year%> <br><br><br><br>
+        Term <%=term%> of <%=year%> <br><br><br>
 
         <b>Courses in Cart:</b>
         <%
@@ -37,10 +36,9 @@
                 E    = new enrollment.enrollment();
                 E = enrollBean.EnrollmentList.get(i);
         %>
-                Term <%=E.term%>, <%=E.schoolyear%> <%=E.courseid%>
+                <br><%=(i+1)%> <%=E.courseid%>
           <%}%>
         <br><br><br>
-        <!-- TODO: Add a list of currently enrolled courses for viewing -->
         <a href="enroll.jsp">Return to enroll</a>
     </body>
 </html>
