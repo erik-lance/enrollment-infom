@@ -51,6 +51,7 @@ public class drop {
                 e.viewRecord(); //only returns 1 since all of the fields of enrollment are PKs
                 EnrollmentList.add(e);
             }
+            rs.close();
             sqlstatement.close();
             conn.close();
             return 1;    
