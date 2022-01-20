@@ -23,16 +23,27 @@
                 status = "Student Record";
             }
             studentBean.viewRecord();
-            
+
             if (request.getParameter("deleteID") != null) {
                 status = "Deleting Student";
-            
+                //studentBean.delRecord();
             }
-            else if (request.getParameter("modifyID") != null) {
-                status = "Modifying Student";
+            else if (request.getParameter("modifyID") != null) { status = "Modifying Student"; }
+            else if (request.getParameter("addID") != null) { status = "Adding Student"; }
+            else if (request.getParameter("saveMod") != null) {
+                status = "Student modified successfully.";
+                studentBean.viewRecord();
+                studentBean.completename = request.getParameter("stFName") + " " + request.getParameter("stLName");
+                studentBean.degreeid = request.getParameter("stDegree");
+                //studentBean.modRecord();
+                studentBean.viewRecord();
             }
-            else if (request.getParameter("addID") != null) {
-                status = "Adding Student";
+            else if (request.getParameter("saveAdd") != null) {
+                status = "Student added successfully.";
+                studentBean.completename = request.getParameter("stFName") + " " + request.getParameter("stLName");
+                studentBean.degreeid = request.getParameter("stDegree");
+                //studentBean.addRecord();
+                studentBean.viewRecord();
             }
 
             String studentid = (studentBean.studentid == 0) ? "" : 
@@ -51,6 +62,7 @@
             <input type="submit" value="Add" name="addID" />
             <input type="submit" value="Modify" name="modifyID" />
             <input type="submit" value="Delete" name="deleteID" />
+            <br>
         </form>
         <%
         if (status.equals("Modifying Student")) {
