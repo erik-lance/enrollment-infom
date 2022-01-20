@@ -4,7 +4,7 @@
     Author:     
 -->
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.sql.*, java.util.*, enrollment.enrollment.*" %>
+<%@page import="java.sql.*, java.util.*, enrollment.*" %>
 
 <html>
     <head>
@@ -14,7 +14,7 @@
     </head>
     <body>
         <h1>Added course to cart!</h1>
-        <jsp:useBean id="enrollBean" class="enrollment.enroll" scope="session" />
+        <jsp:useBean id="enrollBean" class="enroll" scope="session" />
         <%
             enrollment E = enrollBean.EnrollmentList.get(enrollBean.EnrollmentList.size()-1);
             E.courseid = request.getParameter("selectCourse");
@@ -30,6 +30,7 @@
         You are enrolling in: <%=courseid%> <br>
         <%=term%> of <%=year%> <br><br>
 
+        <!-- TODO: Add a list of currently enrolled courses for viewing -->
         <a href="enroll.jsp">Return to enroll</a>
     </body>
 </html>
