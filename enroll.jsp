@@ -22,7 +22,7 @@
         <% 
             String status = "Enroll";
             if (request.getParameter("stID") != null) {
-                enrollBean.studentid = Integer.parseInt(request.getParameter("stID")); 
+                enrollBean.student.studentid = Integer.parseInt(request.getParameter("stID")); 
                 status = "Student Record";
 
                 // This is to prepare student for enrollment by creating a record for the list.
