@@ -13,7 +13,7 @@ public class courses {
     public int modRecord()  { 
         Connection conn;
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/enrollmentdb?user=root&password=12345678&useTimezone=true&serverTimezone=UTC&useSSL=false");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/enrolldb?user=root&password=12345678&useTimezone=true&serverTimezone=UTC&useSSL=false");
             PreparedStatement   sqlstatement = conn.prepareStatement("UPDATE courses SET coursename=?, department=? WHERE courseid=?");
             sqlstatement.setString(3, courseid);
             sqlstatement.setString(1, coursename);
@@ -30,7 +30,7 @@ public class courses {
     public int delRecord()  { 
         Connection conn;
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/enrollmentdb?user=root&password=12345678&useTimezone=true&serverTimezone=UTC&useSSL=false");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/enrolldb?user=root&password=12345678&useTimezone=true&serverTimezone=UTC&useSSL=false");
             PreparedStatement   sqlstatement = conn.prepareStatement("DELETE FROM courses WHERE courseid=?");
             sqlstatement.setString(1, courseid);
             sqlstatement.executeUpdate();
@@ -45,7 +45,7 @@ public class courses {
     public int addRecord()  { 
         Connection conn;
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/enrollmentdb?user=root&password=12345678&useTimezone=true&serverTimezone=UTC&useSSL=false");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/enrolldb?user=root&password=12345678&useTimezone=true&serverTimezone=UTC&useSSL=false");
             PreparedStatement   sqlstatement = conn.prepareStatement("INSERT INTO courses (courseid,coursename,department) VALUES (?,?,?)");
             sqlstatement.setString(1, courseid);
             sqlstatement.setString(2, coursename);
@@ -63,7 +63,7 @@ public class courses {
         
         Connection conn;
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/enrollmentdb?user=root&password=12345678&useTimezone=true&serverTimezone=UTC&useSSL=false");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/enrolldb?user=root&password=12345678&useTimezone=true&serverTimezone=UTC&useSSL=false");
             PreparedStatement   sqlstatement = conn.prepareStatement("SELECT coursename, department FROM courses WHERE courseid=?");
             sqlstatement.setString(1, courseid);
             ResultSet rs = sqlstatement.executeQuery();
