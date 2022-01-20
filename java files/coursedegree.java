@@ -15,7 +15,7 @@ public class coursedegree {
     public int delRecord()  { 
         Connection conn;
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/enrollmentdb?user=root&password=12345678&useTimezone=true&serverTimezone=UTC&useSSL=false");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/enrolldb?user=root&password=12345678&useTimezone=true&serverTimezone=UTC&useSSL=false");
             PreparedStatement   sqlstatement = conn.prepareStatement("DELETE FROM coursedegree WHERE courseid=? AND degree=?");
             sqlstatement.setString(1, courseid);
             sqlstatement.setString(2, degree);
@@ -31,7 +31,7 @@ public class coursedegree {
     public int addRecord()  { 
         Connection conn;
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/enrollmentdb?user=root&password=12345678&useTimezone=true&serverTimezone=UTC&useSSL=false");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/enrolldb?user=root&password=12345678&useTimezone=true&serverTimezone=UTC&useSSL=false");
             PreparedStatement   sqlstatement = conn.prepareStatement("INSERT INTO coursedegree (courseid,degree) VALUES (?,?)");
             sqlstatement.setString(1, courseid);
             sqlstatement.setString(2, degree);
