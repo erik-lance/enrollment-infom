@@ -41,9 +41,9 @@ public class drop {
             sqlstatement.setInt(3, nCurrSY);
             ResultSet rs = sqlstatement.executeQuery();
             EnrollmentList.clear();
-            enrollment e = new enrollment();
             //saves all the retrieved courses in EnrollmentList
             while (rs.next()) {
+                enrollment e = new enrollment();
                 e.studentid = Student.studentid;
                 e.courseid = rs.getString("e.courseid");
                 e.term = nCurrTerm;
