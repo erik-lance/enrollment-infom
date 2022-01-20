@@ -37,7 +37,7 @@
                 year = Integer.parseInt(request.getParameter("curYear"));
                 enrollBean.EnrollmentList.add(E);
             }
-            else if (enrollBean.EnrollmentList.size() > 0) {
+            else if (enrollBean.EnrollmentList.size() > 0 && enrollBean.Student.studentid != 0) {
                 // This will only be called from addtoenroll.jsp to replace the form.
                 // This will help take over in the form's request to get a parameter
                 // Instead of checking a form request, it will check the most recent cart addition.
@@ -51,6 +51,13 @@
                 E.term = term;
                 E.schoolyear = year;
                 enrollBean.EnrollmentList.add(E);
+            }
+            else {
+                // Clears student
+                enrollBean.Student.studentid = 0;
+                enrollBean.Student.completename = "";
+                enrollBean.Student.degreeid = "";
+                enrollBean.clearEnrollment();
             }
             enrollBean.Student.viewRecord();
         
@@ -102,10 +109,17 @@
                             <option value="<%=CD.courseid%>"><%=CD.courseid%></option>
                 <%      }
                     }   %>
-            </select><br>
+            </select>
             <input type="submit" value="Add to cart" name="addCart" />
         </form>
         <% } %>
+
+        <!-- To avoid submitting with nothing in cart. -->
+        <% if(enrollBean.EnrollmentList.size()> 1) {%>
+        <form name="enrollSave" action="submitenroll.jsp" method="POST">
+            <br><input type="submit" value="Submit Enrollment" name="submitCart" />
+        </form>
+        <%}%>
 
         <br><br>
         <a href="index.html">Return to main menu</a>
