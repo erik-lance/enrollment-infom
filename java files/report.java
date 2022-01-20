@@ -8,8 +8,8 @@ import java.util.*;
  */
 public class report {
     
-    Integer term;
-    int schoolyear;
+    public Integer term;
+    public int schoolyear;
     public ArrayList<courses>  CourseReportList      = new ArrayList<> ();
     public ArrayList<Integer>  CountReportList       = new ArrayList<> ();
     
