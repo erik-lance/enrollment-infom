@@ -23,23 +23,24 @@
                 status = "Student Record";
             }
             studentBean.viewRecord();
+            
             if (request.getParameter("deleteID") != null) {
-                status = "Deleting Student!";
+                status = "Deleting Student";
             
             }
             else if (request.getParameter("modifyID") != null) {
-                status = "Modifying Student!";
+                status = "Modifying Student";
             }
             else if (request.getParameter("addID") != null) {
-                status = "Adding Student!";
+                status = "Adding Student";
             }
-            
+
             String studentid = (studentBean.studentid == 0) ? "" : 
             Long.toString(studentBean.studentid);   
         %>
         <% String completename  = studentBean.completename;         %>
         <% String degreeid      = studentBean.degreeid;             %>
-        <p><%=status%></p>
+        <h1><%=status%></h1>
         <p><%=studentid%></p>
         <p><%=completename%></p>
         <p><%=degreeid%></p>
@@ -51,13 +52,31 @@
             <input type="submit" value="Modify" name="modifyID" />
             <input type="submit" value="Delete" name="deleteID" />
         </form>
-        <form name="studentIDConfig" method="POST">
-            
-            
-        </form>
-
-
-        
+        <%
+        if (status.equals("Modifying Student")) {
+        %>
+            <form name="studentIDConfig" action="studentmaintenance.jsp" method="POST">
+                <br><br>Enter new<br>
+                First Name: <input type="text"   name="stFName"   id="stFName" /><br>
+                Last Name:  <input type="text"   name="stLName"   id="stLName" /><br>
+                Degree ID:  <input type="text"   name="stDegree" id="stDegree" /><br>
+                <input type="submit" name="saveMod"  value="Submit"/>
+            </form>
+        <%    
+        }
+        else if (status.equals("Adding Student")) {
+        %>
+            <form name="studentIDConfig" action="studentmaintenance.jsp" method="POST">
+                <br><br><bold>Enter new</bold><br>
+                First Name: <input type="text"   name="stFName"   id="stFName" /><br>
+                Last Name:  <input type="text"   name="stLName"   id="stLName" /><br>
+                Degree ID:  <input type="text"   name="stDegree" id="stDegree" /><br>
+                <input type="submit" name="saveAdd"  value="Submit"/>
+            </form>
+        <%
+        }
+        %>
+        <br><br>
         <a href="index.html">Return to main menu</a>
         <!-- <form name="selectMaintenance" action="" -->
     </body>
