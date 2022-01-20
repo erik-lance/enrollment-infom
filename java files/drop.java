@@ -10,7 +10,7 @@ import java.util.*;
 //these codes doesn't include checking of valid values for any fields yet
 public class drop {
   
-    students                        Student         = new students();
+    public students                 Student         = new students();
     public ArrayList<enrollment>    EnrollmentList  = new ArrayList<> ();
     public ArrayList<enrollment>    DropList        = new ArrayList<> ();
 
