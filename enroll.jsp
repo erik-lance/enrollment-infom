@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
     Document:   enroll.jsp
-    Author:     
+    Author:    Erik Lance Tiongquico
 -->
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.sql.*, java.util.*, enrollment.enrollment.*" %>
@@ -13,18 +13,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h1>Enrolling a Student into the Database</h1>
+        <h1>Enrolling to a Course</h1>
         <jsp:useBean id="enrollBean" class="enrollment.enroll" scope="session"/>
-        
+
         <!-- This entire section is for printing the data of student. -->
-        <% 
+        <%
             String status = "Enroll";
             int term = 0;
             int year = 0;
             if (request.getParameter("stID") != null) {
                 // This makes sure cart is empty should a new user want to use the cart.
                 enrollBean.clearEnrollment();
-                enrollBean.Student.studentid = Integer.parseInt(request.getParameter("stID")); 
+                enrollBean.Student.studentid = Integer.parseInt(request.getParameter("stID"));
                 status = "Student Record";
 
                 // This is to prepare student for enrollment by creating a record for the list.
@@ -60,13 +60,13 @@
                 enrollBean.clearEnrollment();
             }
             enrollBean.Student.viewRecord();
-        
+
             // This is for printing purposes since it will print 0 instead of empty.
-            String studentid = (enrollBean.Student.studentid == 0) ? "" : 
-            Long.toString(enrollBean.Student.studentid);   
+            String studentid = (enrollBean.Student.studentid == 0) ? "" :
+            Long.toString(enrollBean.Student.studentid);
 
             String completename  = enrollBean.Student.completename;
-            String degreeid      = enrollBean.Student.degreeid;             
+            String degreeid      = enrollBean.Student.degreeid;
         %>
         <!-- This loads the student data -->
         <h2><%=status%></h2>
@@ -96,7 +96,7 @@
             <select name="selectCourse" id="selectCourse">
                 <%  for (int i = 0; i < enrollBean.CourseList.size(); i++) {
                         enrollment.coursedegree CD = new enrollment.coursedegree();
-                        CD = enrollBean.CourseList.get(i);                      
+                        CD = enrollBean.CourseList.get(i);
                         boolean valid = true;
                         // This makes sure the course doesn't show up again.
                         for (int j = 0; j < enrollBean.EnrollmentList.size(); j++) {
@@ -104,7 +104,7 @@
                                 valid = false; break;
                             }
                         }
-                        if (valid) {       
+                        if (valid) {
                 %>
                             <option value="<%=CD.courseid%>"><%=CD.courseid%></option>
                 <%      }
