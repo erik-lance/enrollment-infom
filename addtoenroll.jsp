@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
     Document:   addtoenroll.jsp
-    Author:     
+    Author:     Erik Lance Tiongquico
 -->
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.sql.*, java.util.*, enrollment.enrollment.*" %>

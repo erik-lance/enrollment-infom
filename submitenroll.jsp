@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
     Document:   submitenroll.jsp
-    Author:     
+    Author:     Erik Lance Tiongquico
 -->
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.sql.*, java.util.*, enrollment.enrollment.*" %>
@@ -17,15 +17,15 @@
         <jsp:useBean id="enrollBean" class="enrollment.enroll" scope="session" />
         <%
             // The top is removed because it was initialized before submitting.
-            
-            int index = enrollBean.EnrollmentList.size()-1; 
-            enrollBean.EnrollmentList.remove(index);    
+
+            int index = enrollBean.EnrollmentList.size()-1;
+            enrollBean.EnrollmentList.remove(index);
             long studentid = enrollBean.Student.studentid;
             int term = enrollBean.EnrollmentList.get(index-1).term;
             int year = enrollBean.EnrollmentList.get(index-1).schoolyear;
-            
+
             // enrollBean.confirmEnrollment();
-            
+
         %>
         <p><%=studentid%> <%=enrollBean.Student.completename%> <br></p>
         <p>Term <%=term%>, <%=year%><p> <br>

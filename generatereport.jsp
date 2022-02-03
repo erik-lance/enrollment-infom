@@ -4,7 +4,7 @@
     course for the term and school year will be displayed.
 
     Document:   generatereport.jsp
-    Author:     
+    Author:     Erik Lance Tiongquico
 -->
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.sql.*, java.util.*, enrollment.enrollment.*" %>
@@ -16,7 +16,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        
+
         <jsp:useBean id="reportBean" class="enrollment.report" scope="session"/>
         <%
             int term = Integer.parseInt(request.getParameter("term"));
