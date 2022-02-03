@@ -7,23 +7,23 @@ import java.util.*;
  * @author Rafanan, Griffin, Tahimic, Tiongquico
  */
 public class report {
-    
+
     public Integer term;
     public int schoolyear;
     public ArrayList<courses>  CourseReportList      = new ArrayList<> ();
     public ArrayList<Integer>  CountReportList       = new ArrayList<> ();
-    
+
     public report (){
         term = 0;
         schoolyear = 0;
     }
-    
+
     public int resetreport () {
         CourseReportList.clear();
         CountReportList.clear();
         return 1;
     }
-    
+
     public int generatereport () {
          try {
             Connection conn;
@@ -33,15 +33,15 @@ public class report {
                                                                      "FROM      courses c JOIN enrollment e ON c.courseid = e.courseid " +
                                                                      "WHERE     e.term = ? AND e.schoolyear = ? " +
                                                                      "GROUP BY  c.courseid " +
-                                                                     "ORDER BY  c.courseid ");  
+                                                                     "ORDER BY  c.courseid ");
 
             sqlstatement.setInt(1, term);
             sqlstatement.setInt(2, schoolyear);
             ResultSet rs = sqlstatement.executeQuery();
             CourseReportList.clear();
             CountReportList.clear();
-            courses c = new courses ();
             while (rs.next()) {
+                courses c = new courses ();
                 c.courseid = rs.getString("c.courseid");
                 c.viewRecord();
                 CourseReportList.add(c);
@@ -49,7 +49,7 @@ public class report {
             }
             sqlstatement.close();
             conn.close();
-            return 1;    
+            return 1;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             return 0;
