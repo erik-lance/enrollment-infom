@@ -29,7 +29,7 @@
         %>
         <p><%=studentid%> <%=dropBean.Student.completename%> <br></p>
         <p>Term <%=term%>, <%=year%><p> <br>
-        <b>Courses added:</b>
+        <b>Courses droped:</b>
         <%
             for (int i = 0; i < dropBean.DropList.size(); i++) {
                 enrollment.enrollment E    = new enrollment.enrollment();
