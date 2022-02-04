@@ -19,6 +19,8 @@
         <%
             String status = "Choose a Maintenance Option";
             if (request.getParameter("crsID") != null) {
+                courseBean.coursename = "";
+                courseBean.department = "";
                 courseBean.courseid = request.getParameter("crsID");
                 status = "Course Record";
             }

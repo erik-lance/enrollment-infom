@@ -14,12 +14,14 @@
     </head>
     <body>
         <jsp:useBean id="studentBean" class="enrollment.students" scope="session"/>
-        
+
         <!-- This entire section is for printing and manipulating the data of student. -->
-        <% 
+        <%
             String status = "Choose a Maintenance Option";
             if (request.getParameter("stID") != null) {
-                studentBean.studentid = Integer.parseInt(request.getParameter("stID")); 
+                studentBean.completename = "";
+                studentBean.degreeid = "";
+                studentBean.studentid = Integer.parseInt(request.getParameter("stID"));
                 status = "Student Record";
             }
             studentBean.viewRecord();
@@ -30,7 +32,7 @@
             }
             else if (request.getParameter("modifyID") != null) { status = "Modifying Student"; }
             else if (request.getParameter("addID") != null) { status = "Adding Student"; }
-            else if (request.getParameter("saveMod") != null) 
+            else if (request.getParameter("saveMod") != null)
             {   // This is to help save the modifications performed on a student ID.
                 status = "Student modified successfully.";
                 studentBean.viewRecord();
@@ -56,11 +58,11 @@
 
             // This is for printing out the data of selected student based on ID.
             // This ternary is to clean out student id as blank because its datatype is long.
-            String studentid = (studentBean.studentid == 0) ? "" : 
-            Long.toString(studentBean.studentid);   
+            String studentid = (studentBean.studentid == 0) ? "" :
+            Long.toString(studentBean.studentid);
 
             String completename  = studentBean.completename;
-            String degreeid      = studentBean.degreeid;             
+            String degreeid      = studentBean.degreeid;
         %>
         <h1><%=status%></h1>
         <p><%=studentid%></p>
@@ -85,7 +87,7 @@
                 Degree ID:  <input type="text"   name="stDegree" id="stDegree" /><br>
                 <input type="submit" name="saveMod"  value="Submit"/>
             </form>
-        <%    
+        <%
         }
         else if (status.equals("Adding Student")) {
         %>
