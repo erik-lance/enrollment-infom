@@ -28,17 +28,17 @@
 
             if (request.getParameter("deleteID") != null) {
                 status = "Deleting Student";
-                //studentBean.delRecord();
+                studentBean.delRecord();
             }
             else if (request.getParameter("modifyID") != null) { status = "Modifying Student"; }
-            else if (request.getParameter("addID") != null) { status = "Adding Student"; }
+            else if (request.getParameter("addID") != null)    { status = "Adding Student";    }
             else if (request.getParameter("saveMod") != null)
             {   // This is to help save the modifications performed on a student ID.
                 status = "Student modified successfully.";
                 studentBean.viewRecord();
                 studentBean.completename = request.getParameter("stFName") + " " + request.getParameter("stLName");
                 studentBean.degreeid = request.getParameter("stDegree");
-                //studentBean.modRecord();
+                studentBean.modRecord();
                 studentBean.viewRecord();
             }
             else if (request.getParameter("saveAdd") != null)
@@ -46,11 +46,11 @@
                 status = "Student added successfully.";
                 studentBean.completename = request.getParameter("stFName") + " " + request.getParameter("stLName");
                 studentBean.degreeid = request.getParameter("stDegree");
-                //studentBean.addRecord();
+                studentBean.addRecord();
                 studentBean.viewRecord();
             }
             else if (request.getParameter("stID") == null)
-            {   // This clears all information when coming from a diff page
+            {   // This clears all information when coming from a different page
                 studentBean.studentid = 0;
                 studentBean.completename = "";
                 studentBean.degreeid = "";
@@ -64,6 +64,8 @@
             String completename  = studentBean.completename;
             String degreeid      = studentBean.degreeid;
         %>
+
+        <!-- These print out details of the student, but by default print nothing when nothing is passed or recorded. -->
         <h1><%=status%></h1>
         <p><%=studentid%></p>
         <p><%=completename%></p>
@@ -77,7 +79,8 @@
             <input type="submit" value="Delete" name="deleteID" />
             <br>
         </form>
-        <%
+        <% //These two if statements are just ot help differentiate the possible passed form type based on
+           //whether it modified or added a student.
         if (status.equals("Modifying Student")) {
         %>
             <form name="studentIDConfig" action="studentmaintenance.jsp" method="POST">

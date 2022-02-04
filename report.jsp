@@ -14,7 +14,6 @@
     <body>
         <h1>Enrollment Report</h1>
         <form name="reportGen" action="generatereport.jsp" method="POST">
-            <!-- Should I turn this into a select? -->
             Term: <input type="text" name="term" id="term" /> <br>
             Year: <input type="text" name="year" id="year" /> <br>
             <input type="submit" name="reportSub" />

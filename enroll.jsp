@@ -36,9 +36,13 @@
                 term = Integer.parseInt(request.getParameter("curTerm"));
                 year = Integer.parseInt(request.getParameter("curYear"));
                 enrollBean.EnrollmentList.add(E);
+
+                // Note: As you can see, a new Enrollment object was added to the list already.
+                // This object has the details for ID, term, year, but not the course. This is properly
+                // filled after adding a course to cart.
             }
             else if (enrollBean.EnrollmentList.size() > 0 && enrollBean.Student.studentid != 0) {
-                // This will only be called from addtoenroll.jsp to replace the form.
+                // This can only be called from addtoenroll.jsp to replace the form.
                 // This will help take over in the form's request to get a parameter
                 // Instead of checking a form request, it will check the most recent cart addition.
                 int index = enrollBean.EnrollmentList.size()-1;
@@ -61,7 +65,8 @@
             }
             enrollBean.Student.viewRecord();
 
-            // This is for printing purposes since it will print 0 instead of empty.
+            // This is for printing purposes since it will print 0 instead of an empty string.
+            // By default this is empty and only prints details once a student is selected.
             String studentid = (enrollBean.Student.studentid == 0) ? "" :
             Long.toString(enrollBean.Student.studentid);
 
@@ -84,9 +89,8 @@
         </form>
 
         <%
-            // TODO add checker if came from addtoenroll.jsp solved with size check
             // This makes sure that the form for courses will appear only after
-            // a student ID has been loaded.
+            // a student ID has been loaded OR there is a course in cart already.
             if (request.getParameter("checkID") != null || enrollBean.EnrollmentList.size() > 0) {
                 enrollBean.loadCourses();
         %>
@@ -98,7 +102,7 @@
                         enrollment.coursedegree CD = new enrollment.coursedegree();
                         CD = enrollBean.CourseList.get(i);
                         boolean valid = true;
-                        // This makes sure the course doesn't show up again.
+                        // This makes sure the course doesn't show up again after adding to cart.
                         for (int j = 0; j < enrollBean.EnrollmentList.size(); j++) {
                             if (enrollBean.EnrollmentList.get(j).courseid.equals(CD.courseid)) {
                                 valid = false; break;

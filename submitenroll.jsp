@@ -24,7 +24,7 @@
             int term = enrollBean.EnrollmentList.get(index-1).term;
             int year = enrollBean.EnrollmentList.get(index-1).schoolyear;
 
-            // enrollBean.confirmEnrollment();
+            enrollBean.confirmEnrollment();
 
         %>
         <p><%=studentid%> <%=enrollBean.Student.completename%> <br></p>

@@ -14,7 +14,6 @@
     </head>
     <body>
         <jsp:useBean id="courseBean" class="enrollment.courses" scope="session"/>
-        <!--<h1>Select a maintenance option to perform</h1>-->
         <!-- This entire section is for printing and manipulating the data of student. -->
         <%
             String status = "Choose a Maintenance Option";

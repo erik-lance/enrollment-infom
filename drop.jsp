@@ -37,9 +37,13 @@
                 term = Integer.parseInt(request.getParameter("curTerm"));
                 year = Integer.parseInt(request.getParameter("curYear"));
                 dropBean.DropList.add(E);
+
+                // Note: As you can see, a new Enrollment object was added to the list already.
+                // This object has the details for ID, term, year, but not the course. This is properly
+                // filled after adding a course to cart.
             }
             else if (dropBean.DropList.size() > 0 && dropBean.Student.studentid != 0) {
-                // This will only be called from addtodrop.jsp to replace the form.
+                // This can only be called from addtoenroll.jsp to replace the form.
                 // This will help take over in the form's request to get a parameter
                 // Instead of checking a form request, it will check the most recent cart addition.
                 int index = dropBean.DropList.size()-1;
@@ -63,6 +67,7 @@
             dropBean.Student.viewRecord();
 
             // This is for printing purposes since it will print 0 instead of empty.
+            // By default this is empty and only prints details once a student is selected.
             String studentid = (dropBean.Student.studentid == 0) ? "" :
             Long.toString(dropBean.Student.studentid);
 
@@ -85,7 +90,6 @@
         </form>
 
         <%
-            // TODO add checker if came from addtodrop.jsp solved with size check
             // This makes sure that the form for courses will appear only after
             // a student ID has been loaded.
             if (request.getParameter("checkID") != null || dropBean.DropList.size() > 0) {
