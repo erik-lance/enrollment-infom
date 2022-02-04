@@ -102,9 +102,16 @@
                 <%  for (int i = 0; i < dropBean.EnrollmentList.size(); i++) {
                         String crsID = "";
                         crsID = dropBean.EnrollmentList.get(i).courseid;
+                        boolean valid = true;
+                        for (int j = 0; j < dropBean.DropList.size(); j++) {
+                            if (dropBean.DropList.get(j).courseid.equals(crsID)){
+                                valid = false; break;
+                            }
+                        }
+                        if (valid) {
                 %>
                             <option value="<%=crsID%>"><%=crsID%></option>
-                <%
+                <%      }
                     }   %>
             </select>
             <input type="submit" value="Add to drop cart" name="addCart" />
