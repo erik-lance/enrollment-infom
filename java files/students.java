@@ -14,7 +14,7 @@ public class students {
         Connection conn;
         try {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/enrolldb?user=root&password=12345678&useTimezone=true&serverTimezone=UTC&useSSL=false");
-            PreparedStatement   sqlstatement = conn.prepareStatement("UPDATE students SET completename=?, degreeid=? department=? WHERE studentid=?");
+            PreparedStatement   sqlstatement = conn.prepareStatement("UPDATE students SET completename=?, degreeid=? WHERE studentid=?");
             sqlstatement.setLong(3, studentid);
             sqlstatement.setString(1, completename);
             sqlstatement.setString(2, degreeid);
