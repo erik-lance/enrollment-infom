@@ -27,7 +27,7 @@
         %>
         <h1>Report for Term <%=term%>, <%=year%></h1>
         <p> Course ID | Count</p>
-        <%
+        <%  // This for loop helps load each course name with its respective number.
             for (int i = 0; i < reportBean.CourseReportList.size(); i++) {
                 enrollment.courses C = new enrollment.courses();
                 int CT = 0;
